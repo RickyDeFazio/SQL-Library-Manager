@@ -1,0 +1,25 @@
+{
+  "name": "sql-library-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RickyDeFazio/sql-library-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RickyDeFazio/sql-library-manager/issues"
+  },
+  "homepage": "https://github.com/RickyDeFazio/sql-library-manager#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pug": "^2.0.4",
+    "sequelize": "^5.12.3",
+    "sqlite3": "^4.0.9"
+  }
+}
