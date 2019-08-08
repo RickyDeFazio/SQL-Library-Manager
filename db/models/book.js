@@ -11,7 +11,15 @@ module.exports = (sequelize) => {
     title: {
       type: Sequelize.STRING,
       allowNull: false,
-    },
+      validate: {
+        notNull: {
+          msg: 'Please provide a value for "title".'
+        },
+        notEmpty: {
+          msg: 'Please provide a value for "title".',
+        },
+      },
+    },sfgv
     author: {
       type: Sequelize.STRING,
       allowNull: false,

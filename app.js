@@ -13,7 +13,7 @@ const { Book } = models;
 
     const bookInstances = await Promise.all([
       Book.create({
-        title: 'Ready Player One',
+        title: '',
         author: 'Earnest Cline',
         genre: 'Adventure',
         year: 2011
