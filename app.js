@@ -1,3 +1,30 @@
+const express = require('express');
+
+const app = express();
+
+app.set('view engine', 'pug');
+
+app.get('/', (req, res) => {
+  res.redirect('/books');
+});
+
+app.get('/books', (req, res) => {
+  res.render('all_books');
+});
+
+app.get('/books/new', (req, res) => {
+  res.render('new_book');
+});
+
+
+app.listen(3000, () => {
+  console.log('The app is running on localhost:3000')
+});
+
+/*********************
+ * End Express code here
+ **********************/
+
 const { sequelize, models } = require('./db');
 const { Book } = models;
 
