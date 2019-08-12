@@ -2,19 +2,28 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.set('view engine', 'pug');
 
+// Routes Below
 app.get('/', (req, res) => {
   res.redirect('/books');
 });
 
+
 app.get('/books', (req, res) => {
-  res.render('index');
+  res.render('index', { variableName: "variable content, use interpolation to add variable to static text" });
 });
+
 
 app.get('/books/new', (req, res) => {
   res.render('new_book');
 });
+
+app.get('/error', (req, res) => {
+  res.render('error');
+})
 
 
 app.listen(3000, () => {
