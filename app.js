@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/books', (req, res) => {
-  res.render('all_books');
+  res.render('index');
 });
 
 app.get('/books/new', (req, res) => {
