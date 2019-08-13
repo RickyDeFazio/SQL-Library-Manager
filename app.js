@@ -3,42 +3,40 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(express.static('public'));
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'pug');
 
-// Routes Below
-app.get('/', (req, res) => {
-  res.redirect('/books');
+
+// Routes
+const indexRoutes = require('./routes');
+const bookRoutes = require('./routes/books');
+app.use(indexRoutes);
+app.use(bookRoutes);
+
+
+// Error Handling
+app.use((req, res, next) => {
+  const err = new Error('Page Not Found');
+  err.status = 404;
+  next(err);
 });
 
 
-app.get('/books', (req, res) => {
-  res.render('index', { variableName: "variable content, use interpolation to add variable to static text" });
+app.use((err, req, res, next) => {
+  res.locals.error = err;
+  res.status(err.status);
+  res.render('page_not_found', err);
+  console.log("ERROR: Page Not Found. Status Code: ", err.status);
 });
 
-
-app.get('/books/new', (req, res) => {
-  res.render('new_book');
-});
-
-app.post('/books/new', (req, res) => {
-  res.render('new_book');
-});
-
-// Tester Route Below
-app.get('/test', (req, res) => {
-  res.render('page_not_found');
-});
-// Delete Above Code 
 
 app.listen(3000, () => {
   console.log('The app is running on localhost:3000')
 });
 
 /*********************
- * End Express code here
+ * End of Express code here
  **********************/
 
 const { sequelize, models } = require('./db');
