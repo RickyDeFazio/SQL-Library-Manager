@@ -21,10 +21,11 @@ app.get('/books/new', (req, res) => {
   res.render('new_book');
 });
 
-app.get('/error', (req, res) => {
-  res.render('error');
-})
-
+// Tester Route Below
+app.get('/test', (req, res) => {
+  res.render('page_not_found');
+});
+// Delete Above Code 
 
 app.listen(3000, () => {
   console.log('The app is running on localhost:3000')
