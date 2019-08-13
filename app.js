@@ -21,6 +21,10 @@ app.get('/books/new', (req, res) => {
   res.render('new_book');
 });
 
+app.post('/books/new', (req, res) => {
+  res.render('new_book');
+});
+
 // Tester Route Below
 app.get('/test', (req, res) => {
   res.render('page_not_found');
