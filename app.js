@@ -67,7 +67,7 @@ const { Book } = models;
         title: 'Ready Player One',
         author: 'Earnest Cline',
         genre: 'Adventure',
-        year: 2011
+        year: 2011,
       }),
     ]);
     
