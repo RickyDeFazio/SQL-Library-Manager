@@ -8,14 +8,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'pug');
 
 
-// Routes
+/**
+ * ROUTES
+ */
 const indexRoutes = require('./routes');
 const bookRoutes = require('./routes/books');
 app.use(indexRoutes);
 app.use(bookRoutes);
 
 
-// Error Handling
+
+
+
+/**
+ * ERROR HANDLING
+ */
 app.use((req, res, next) => {
   const err = new Error('Page Not Found');
   err.status = 404;
@@ -25,15 +32,23 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.locals.error = err;
-  res.status(err.status);
-  res.render('page_not_found', err);
-  console.log("ERROR: Page Not Found. Status Code: ", err.status);
+  res.status(err.status || 500);
+  if (err.status === 404) {
+    res.render('page_not_found', err);
+  } else {
+    res.render('error', err);
+  }
+  console.log("ERROR: An unexpected error has occurred. Status Code: ", err.status || 500);
 });
 
-
+/**
+ * Serving App to localhost:3000/
+ */
 app.listen(3000, () => {
   console.log('The app is running on localhost:3000')
 });
+
+
 
 /*********************
  * End of Express code here
