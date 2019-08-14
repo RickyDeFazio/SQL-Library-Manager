@@ -11,13 +11,8 @@ app.set('view engine', 'pug');
 /**
  * ROUTES
  */
-const indexRoutes = require('./routes');
-const bookRoutes = require('./routes/books');
-app.use(indexRoutes);
-app.use(bookRoutes);
-
-
-
+const mainRoutes = require('./routes');
+app.use(mainRoutes);
 
 
 /**
