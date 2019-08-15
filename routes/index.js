@@ -23,7 +23,7 @@ router.post('/books/new', (req, res) => {
 
 // Shows book detail form
 router.get('/books/:id', (req, res) => {
-  res.render('new_book'); 
+  res.render('book_detail', { title: "Book Details" });
 });
 
 // Updates book info in the database
