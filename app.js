@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-app.use(express.static('public'));
+app.use('/static', express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'pug');
@@ -29,9 +29,9 @@ app.use((err, req, res, next) => {
   res.locals.error = err;
   res.status(err.status || 500);
   if (err.status === 404) {
-    res.render('page_not_found', err);
+    res.render('page_not_found', { err, title: "Error" });
   } else {
-    res.render('error', err);
+    res.render('error', { err, title: "Error" });
   }
   console.log("ERROR: An unexpected error has occurred. Status Code: ", err.status || 500);
 });

@@ -8,12 +8,12 @@ router.get('/', (req, res) => {
 
 // Shows the full list of books
 router.get('/books', (req, res) => {
-  res.render('index', { variableName: "variable content, use interpolation to add variable to static text" });
+  res.render('index', { title: "Books" });
 });
 
 // Shows the create new book form
 router.get('/books/new', (req, res) => {
-  res.render('new_book');
+  res.render('new_book', { title: "New Book" });
 });
 
 // Posts a new book to the database
@@ -32,9 +32,9 @@ router.post('/books/:id', (req, res) => {
 });
 
 // Deletes a book.
-router.post('/books/:id/delete', (req, res) = {
-  // how to handle this???
-});
+// router.post('/books/:id/delete', (req, res) = {
+//   // how to handle this???
+// });
 
 
 module.exports = router;

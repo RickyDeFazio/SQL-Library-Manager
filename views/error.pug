@@ -1,9 +1,5 @@
-doctype html
-html(lang="en")
-  head
-    title Unexpected Error
-    link(rel='stylesheet', href='stylesheets/style.css')
-  body
-    h1.error= error.message
-    h2 Error Status: #{error.status}
-    p Sorry! There was an unexpected error on the server.
+extends layout.pug
+block content
+  h1.error= error.message
+  h2 Error Status: #{error.status}
+  p Sorry! There was an unexpected error on the server.

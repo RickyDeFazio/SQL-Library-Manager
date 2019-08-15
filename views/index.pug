@@ -1,10 +1,5 @@
-doctype html
-html(lang="en")
-  head
-    title Books
-  body
-    h1 Books
-    p 
-      a(class='button' href='/books/new') Create New Book
-
-    p= variableName
+extends layout.pug
+block content
+  h1 Books
+  p 
+    a(class='button' href='/books/new') Create New Book
