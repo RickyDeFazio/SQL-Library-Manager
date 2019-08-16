@@ -11,9 +11,10 @@ block content
         th Genre
         th Year
     tbody
-      tr
-        td= book[0].title
-          a(href='/book_detail')
-        td= book[0].author
-        td= book[0].genre
-        td= book[0].year
+      each book in books
+        tr
+          td
+            a(href='/books/new')= book.title
+          td= book.author
+          td= book.genre
+          td= book.year

@@ -29,7 +29,7 @@ app.use((err, req, res, next) => {
   res.locals.error = err;
   res.status(err.status || 500);
   if (err.status === 404) {
-    res.render('page_not_found', { err, title: "Error" });
+    res.render('page-not-found', { err, title: "Error" });
   } else {
     res.render('error', { err, title: "Error" });
   }
@@ -68,6 +68,18 @@ const { Book } = models;
         author: 'Earnest Cline',
         genre: 'Adventure',
         year: 2011,
+      }),
+      Book.create({
+        title: 'The Shining',
+        author: 'Stephen King',
+        genre: 'Horror',
+        year: 1977,
+      }),
+      Book.create({
+        title: 'The Truth',
+        author: 'Neil Strauss',
+        genre: 'Autobiography',
+        year: 2015,
       }),
     ]);
     
