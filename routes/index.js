@@ -18,7 +18,7 @@ router.get('/books/new', (req, res) => {
 
 // Posts a new book to the database
 router.post('/books/new', (req, res) => {
-  res.render('new_book');
+  res.redirect('/books');
 });
 
 // Shows book detail form
@@ -27,8 +27,8 @@ router.get('/books/:id', (req, res) => {
 });
 
 // Updates book info in the database
-router.post('/books/:id', (req, res) => {
-  res.render('new_book');
+router.put('/books/:id', (req, res) => {
+  res.redirect('/books/:id/' + book.id);
 });
 
 // Deletes a book.
