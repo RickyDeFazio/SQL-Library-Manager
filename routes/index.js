@@ -1,14 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+const { sequelize, models } = require('../db');
+const { Book } = models;
+
 // Redirects user to main books page
 router.get('/', (req, res) => {
   res.redirect('/books');
 });
 
 // Shows the full list of books
-router.get('/books', (req, res) => {
-  res.render('index', { title: "Books" });
+router.get('/books', async (req, res) => {
+  const book = await Book.findAll();
+  res.render('index', { book, title: "Books" });
 });
 
 // Shows the create new book form

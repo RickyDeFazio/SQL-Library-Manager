@@ -12,9 +12,8 @@ block content
         th Year
     tbody
       tr
-        td
+        td= book[0].title
           a(href='/book_detail')
-        td
-        td
-        td
-        td
+        td= book[0].author
+        td= book[0].genre
+        td= book[0].year
