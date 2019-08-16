@@ -1,6 +1,4 @@
 extends layout.pug
 block content
-  form(action='', method='post')
-    label Please enter the title of your book.
-      input(type='text', name='title')
-    button(type='submit') Submit
+  h1 New Book
+  include includes/form.pug
