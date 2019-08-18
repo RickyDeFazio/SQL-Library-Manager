@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 // Shows the full list of books
 router.get('/books', async (req, res) => {
   const books = await Book.findAll({
-    order: [ [ 'title', 'ASC' ] ],
+    order: [ [ "title", "ASC" ] ]
   });
   res.render('index', { books, title: "Books" });
 });
@@ -28,8 +28,12 @@ router.post('/books/new', (req, res) => {
 });
 
 // Shows book detail form
-router.get('/books/:id', (req, res) => {
-  res.render('update-book', { title: "Book Details" });
+router.get('/books/:id', async (req, res) => {
+  const book = await Book.findByPk(req.params.id);
+  res.render('update-book', { 
+    title: "Book Details",
+    book,
+  });
 });
 
 // Updates book info in the database
