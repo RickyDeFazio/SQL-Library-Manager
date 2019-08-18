@@ -23,8 +23,21 @@ router.get('/books/new', (req, res) => {
 });
 
 // Posts a new book to the database
-router.post('/books/new', (req, res) => {
-  res.redirect('/books');
+router.post('/books/new', async (req, res) => {
+  try {
+    await Book.create({
+      title: req.body.title,
+      author: req.body.author,
+      genre: req.body.genre,
+      year: req.body.year,
+    });
+
+    res.redirect('/books');
+  } catch (error) {
+    if (error.name === 'SequelizeValidationError') {
+      res.render('formError');
+    }
+  }
 });
 
 // Shows book detail form
@@ -38,7 +51,7 @@ router.get('/books/:id', async (req, res) => {
 
 // Updates book info in the database
 router.post('/books/:id', (req, res) => {
-  res.redirect('/books/' + book.id);
+  res.redirect(`/books/${book.id}`);
 });
 
 // Deletes a book.
