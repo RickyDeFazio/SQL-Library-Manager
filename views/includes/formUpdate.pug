@@ -1,4 +1,5 @@
-form(action='/books/new', method='post')
+form(action=`/books/${req.params.id}`, method='post')
+  include ./formError.pug
   p
     label(for='title') Title
     input(type='text' name='title' id='title' value=`${book.title}`)

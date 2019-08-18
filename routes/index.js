@@ -38,7 +38,7 @@ router.get('/books/:id', async (req, res) => {
 
 // Updates book info in the database
 router.post('/books/:id', (req, res) => {
-  res.redirect('/books/:id/' + book.id);
+  res.redirect('/books/' + book.id);
 });
 
 // Deletes a book.
