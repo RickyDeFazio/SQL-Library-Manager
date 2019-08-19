@@ -25,12 +25,7 @@ router.get('/books/new', (req, res) => {
 // Posts a new book to the database
 router.post('/books/new', async (req, res) => {
   try {
-    await Book.create({
-      title: req.body.title,
-      author: req.body.author,
-      genre: req.body.genre,
-      year: req.body.year,
-    });
+    await Book.create(req.body);
 
     res.redirect('/books');
   } catch (error) {
@@ -53,25 +48,31 @@ router.get('/books/:id', async (req, res) => {
 // Updates book info in the database
 router.post('/books/:id', async (req, res) => {
   try {
-    const ID = req.params.id;
-    const book = await Book.findByPk(ID);
+    const book = await Book.findByPk(req.params.id);
     await book.update(req.body);
 
     res.redirect('/books/');
   } catch (error) {
     if (error.name === 'SequelizeValidationError') {
       console.error(error.message);
-      const ID = req.params.id;
-      const book = await Book.findByPk(ID);
+      const book = await Book.findByPk(req.params.id);
       return res.render('formError-updateBook', { title: "Form Error", book });
     }
   }
 });
 
 // Deletes a book.
-// router.post('/books/:id/delete', (req, res) = {
-//   // how to handle this???
-// });
+router.post('/books/:id/delete', async (req, res) => {
+  try {
+    const bookToDelete = await Book.findByPk(req.params.id);
+    await bookToDelete.destroy();
+
+    res.redirect('/books');
+  } catch (error) {
+    render('error');
+    console.error('Error destroying book', error);
+  }
+});
 
 
 module.exports = router;
