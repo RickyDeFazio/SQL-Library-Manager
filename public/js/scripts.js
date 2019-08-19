@@ -1,9 +1,10 @@
+"use strict";
 /****************************
  * SEARCH & PAGINATION
  ***************************/
 
 /**
- * Add SearchBar to /Books Page
+ * Global variables & added searchBar
  */
 const div = document.querySelector('div');
 const p = document.createElement('p');
@@ -13,12 +14,10 @@ div.lastChild.appendChild(searchBar);
 searchBar.setAttribute("class", "search");
 searchBar.setAttribute("placeholder", "Search by title, author, genre, or year...");
 
-
 const table = document.querySelector('table');
 const result = document.createElement('h3');
 table.append(result);
 const tableRows = document.querySelector('tbody').children;
-
 
 
 /**
@@ -36,9 +35,19 @@ function showPage(list, page) {
   }
 }
 
-// Shows the first 10 students when the page initially loads
+// Shows the first 10 movies
 showPage(tableRows, 1);
 
+
+/*
+  1. Iterates through list to determine how many pages are needed.
+  2. Checks and removes current pagination elements.
+  3. Creates div and ul to append new page links.
+  4. Creates an li and a tag for each page.
+  5. Adds event listener for each page link.
+  6. Removes 'active' class on previously clicked page link.
+  7. Adds 'active' class to most recent page clicked.
+*/
 function appendPageLinks(list) {
   for (let i = 0; i <= list.length; i++){
     numberOfPages = i / 10;
@@ -46,7 +55,7 @@ function appendPageLinks(list) {
   numberOfPages = Math.ceil(numberOfPages);
 
   if (document.querySelector('.pagination')) {
-    deletePag = document.querySelector('.pagination')
+    const deletePag = document.querySelector('.pagination')
     deletePag.parentNode.removeChild(deletePag);
   }
   const body = document.querySelector('body');
@@ -73,15 +82,16 @@ function appendPageLinks(list) {
   }
 }
 
-// Shows the initial page links when the page first loads
+// Shows the initial page links
 appendPageLinks(tableRows);
 
 
-/*
- * Search Functionality
+/* Search Functionality
+ * 1. Searches for movies by title, author, genre, and year.
+ * 2. Shows movies matching input.
+ * 3. Hides movies that don't match.
+ * 4. Displays 'no results found' if no movies match.
  */
-
-
 function searchForMovies(list) {
   const moviesFound = [];
   for (let i = 0; i < list.length; i++) {
