@@ -63,6 +63,8 @@ const { Book } = models;
     console.log('Synchronizing the models with the database...');
     await sequelize.sync({ force: true });
 
+    // Populating Database
+
     const bookInstances = await Promise.all([
       Book.create({
         title: 'Ready Player One',
