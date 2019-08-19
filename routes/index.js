@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { sequelize, models } = require('../db');
+const { models } = require('../db');
 const { Book } = models;
 
 // Redirects user to main books page
