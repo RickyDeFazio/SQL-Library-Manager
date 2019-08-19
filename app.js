@@ -1,4 +1,4 @@
-// Initially populates DB with movies
+// Initially populates DB with books
 const populate = require('./populate');
 populate();
 

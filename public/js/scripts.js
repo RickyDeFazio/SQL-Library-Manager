@@ -27,7 +27,7 @@ let numberOfPages = 0;
 
 function showPage(list, page) {
   for (let i = 0; i < list.length; i++) {
-    if (i >= (page * 10 - 10) && i <= (page * 10) - 1) {
+    if (i >= (page * 15 - 15) && i <= (page * 15) - 1) {
       list[i].style.display = 'table-row';
     } else {
       list[i].style.display = "none";
@@ -35,7 +35,7 @@ function showPage(list, page) {
   }
 }
 
-// Shows the first 10 movies
+// Shows the first 15 books
 showPage(tableRows, 1);
 
 
@@ -50,7 +50,7 @@ showPage(tableRows, 1);
 */
 function appendPageLinks(list) {
   for (let i = 0; i <= list.length; i++){
-    numberOfPages = i / 10;
+    numberOfPages = i / 15;
   }
   numberOfPages = Math.ceil(numberOfPages);
 
@@ -87,25 +87,25 @@ appendPageLinks(tableRows);
 
 
 /* Search Functionality
- * 1. Searches for movies by title, author, genre, and year.
- * 2. Shows movies matching input.
- * 3. Hides movies that don't match.
- * 4. Displays 'no results found' if no movies match.
+ * 1. Searches for books by title, author, genre, and year.
+ * 2. Shows books matching input.
+ * 3. Hides books that don't match.
+ * 4. Displays 'no results found' if no books match.
  */
-function searchForMovies(list) {
-  const moviesFound = [];
+function searchForbooks(list) {
+  const booksFound = [];
   for (let i = 0; i < list.length; i++) {
     if (list[i].children[0].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) || list[i].children[1].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) || list[i].children[2].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) || list[i].children[3].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) ) {
-      moviesFound.push(list[i]);
+      booksFound.push(list[i]);
       console.log(list[i]);
       list[i].style.display = 'table-row';
     } else {
       list[i].style.display = 'none';
     }
   }
-  appendPageLinks(moviesFound);
-  showPage(moviesFound, 1);
-  if (moviesFound.length === 0 && searchBar.value.length > 0) {
+  appendPageLinks(booksFound);
+  showPage(booksFound, 1);
+  if (booksFound.length === 0 && searchBar.value.length > 0) {
     result.textContent = "No results found";
   } else {
     result.textContent = '';
@@ -113,5 +113,5 @@ function searchForMovies(list) {
 }
 
 searchBar.addEventListener('keyup', () => {
-  searchForMovies(tableRows);
+  searchForbooks(tableRows);
 });
