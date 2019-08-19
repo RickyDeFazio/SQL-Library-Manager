@@ -1,10 +1,9 @@
 extends layout.pug
 block content
   h1 Books
-  p 
-    a(class='button' href='/books/new') Create New Book
-  p
-    input(type='search' name="searchBar" placeholder="Search by title, author, genre, or year...").search
+  div
+    p 
+      a(class='button' href='/books/new') Create New Book
   table
     thead
       tr
@@ -20,3 +19,5 @@ block content
           td= book.author
           td= book.genre
           td= book.year
+
+  script(src='/static/js/scripts.js')
