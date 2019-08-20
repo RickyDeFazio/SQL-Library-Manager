@@ -105,6 +105,7 @@ module.exports = async () => {
         year: 2012,
       }),
     ]);
+    console.log('Database populated!');
 
   } catch (error) {
     console.error('Error connecting to the database: ', error);
