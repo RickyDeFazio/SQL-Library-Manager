@@ -2,9 +2,7 @@
 const populate = require('./populate');
 populate();
 
-/**
- * Express Controller File
- */
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -36,9 +34,9 @@ app.use((err, req, res, next) => {
   res.locals.error = err;
   res.status(err.status || 500);
   if (err.status === 404) {
-    res.render('page-not-found', { err, title: "Error" });
+    res.render('page-not-found', { title: "Error" });
   } else {
-    res.render('error', { err, title: "Error" });
+    res.render('error', { title: "Error" });
   }
   console.log("ERROR: An unexpected error has occurred. Status Code: ", err.status || 500);
 });
