@@ -32,10 +32,10 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.locals.error = err;
-  res.status(err.status || 500);
   if (err.status === 404) {
     res.render('page-not-found', { title: "Error" });
   } else {
+    err.status = 500;
     res.render('error', { title: "Error" });
   }
   console.log("ERROR: An unexpected error has occurred. Status Code: ", err.status || 500);
