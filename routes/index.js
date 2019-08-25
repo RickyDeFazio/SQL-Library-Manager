@@ -10,8 +10,6 @@ function asyncHandler(cb) {
     try {
       await cb(req, res, next);
     } catch (error) {
-      // res.render('error', { error });
-      // console.error(error);
       next(error);
     }
   }
