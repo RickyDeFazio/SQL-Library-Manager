@@ -1,4 +1,4 @@
-# SQL-Library-Manager
+# Library-Manager
 
 Utilized express.js, sqlite3, sequalize, and pug templates to create an interactive library database.
 
