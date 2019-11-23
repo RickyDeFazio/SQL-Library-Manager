@@ -1,4 +1,4 @@
-# Library-Manager
+# Library Manager
 
 ![example](example/libraryManager.png)
 
