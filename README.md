@@ -1,5 +1,7 @@
 # Library-Manager
 
+![example](example/libraryManagerPhoto.png)
+
 Utilized express.js, sqlite3, sequalize, and pug templates to create an interactive library database.
 
 
