@@ -46,7 +46,7 @@ app.use((err, req, res, next) => {
 /**
  * Serving App to localhost:3000/
  */
-app.listen(3000, () => {
+app.listen(process.evn.PORT || 3000, () => {
   console.log('The app is running on localhost:3000')
 });
 
