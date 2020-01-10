@@ -1,5 +1,5 @@
 # Library Manager
-
+![Heroku](https://heroku-badge.herokuapp.com/?app=heroku-badge)
 ![example](example/libraryManager.png)
 
 Utilized express.js, sqlite3, sequalize, and pug templates to create an interactive library database.
