@@ -96,8 +96,7 @@ function searchForbooks(list) {
   const query = searchBar.value.toLowerCase();
   const booksFound = [];
   Array.from(list).forEach(tr => {
-    if (
-      Array.from(tr.children).some( data => data.textContent.toLowerCase().includes(query))) {
+    if (Array.from(tr.children).some(data => data.textContent.toLowerCase().includes(query))) {
       booksFound.push(tr);
       tr.style.display = 'table-row';
     } else {
