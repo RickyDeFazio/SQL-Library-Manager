@@ -7,12 +7,12 @@ module.exports = async () => {
     console.log("Testing Connection...")
     await sequelize.authenticate();
     console.log("Connection succesful!");
-    
+
     // syncing
     console.log('Synchronizing the models with the database...');
     await sequelize.sync({ force: true });
 
-    // Populating Database with Books
+    // populating DB with books
     const bookInstances = await Promise.all([
       Book.create({
         title: 'Ready Player One',

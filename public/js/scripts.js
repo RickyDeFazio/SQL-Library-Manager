@@ -85,26 +85,29 @@ function appendPageLinks(list) {
 // Shows the initial page links
 appendPageLinks(tableRows);
 
-
-/* Search Functionality
- * 1. Searches for books by title, author, genre, and year.
- * 2. Shows books matching input.
- * 3. Hides books that don't match.
- * 4. Displays 'no results found' if no books match.
+/**
+ * - Searches for books by title, author, genre, and year.
+ * - Shows books matching input.
+ * - Hides books that don't match.
+ * - Displays 'no results found' if no books match.
+ * @param {HTMLCollection} list table rows
  */
 function searchForbooks(list) {
+  const query = searchBar.value.toLowerCase();
   const booksFound = [];
-  for (let i = 0; i < list.length; i++) {
-    if (list[i].children[0].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) || list[i].children[1].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) || list[i].children[2].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) || list[i].children[3].textContent.toLowerCase().includes(searchBar.value.toLowerCase()) ) {
-      booksFound.push(list[i]);
-      console.log(list[i]);
-      list[i].style.display = 'table-row';
+  Array.from(list).forEach(tr => {
+    if (
+      Array.from(tr.children).some( data => data.textContent.toLowerCase().includes(query))) {
+      booksFound.push(tr);
+      tr.style.display = 'table-row';
     } else {
-      list[i].style.display = 'none';
+      tr.style.display = 'none';
     }
-  }
+  })
+
   appendPageLinks(booksFound);
   showPage(booksFound, 1);
+
   if (booksFound.length === 0 && searchBar.value.length > 0) {
     result.textContent = "No results found";
   } else {
