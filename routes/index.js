@@ -43,7 +43,7 @@ router.post('/books/new', asyncHandler(async (req, res) => {
     if (error.name === 'SequelizeValidationError') {
       console.error(error.message);
       const errorMessages = error.errors.map(error => error.message)
-      return res.render('formError-newBook', { title: "Form Error", errors: errorMessages });
+      return res.render('formError-newBook', { errors: errorMessages });
     }
   }
 }));
@@ -69,7 +69,7 @@ router.post('/books/:id', async (req, res) => {
       console.error(error.message);
       const book = await Book.findByPk(req.params.id);
       const errorMessages = error.errors.map(error => error.message)
-      return res.render('formError-updateBook', { title: "Form Error", book, errors: errorMessages });
+      return res.render('formError-updateBook', { book, errors: errorMessages });
     }
   }
 });
