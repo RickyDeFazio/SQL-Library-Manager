@@ -92,11 +92,15 @@ appendPageLinks(tableRows);
  * - Displays 'no results found' if no books match.
  * @param {HTMLCollection} list table rows
  */
-function searchForbooks(list) {
+function searchForBooks(list) {
   const query = searchBar.value.toLowerCase();
   const booksFound = [];
   Array.from(list).forEach(tr => {
-    if (Array.from(tr.children).some(data => data.textContent.toLowerCase().includes(query))) {
+    const searchFound = Array.from(tr.children).some(data => (
+      data.textContent.toLowerCase().includes(query)
+    ));
+
+    if (searchFound) {
       booksFound.push(tr);
       tr.style.display = 'table-row';
     } else {
@@ -115,5 +119,5 @@ function searchForbooks(list) {
 }
 
 searchBar.addEventListener('keyup', () => {
-  searchForbooks(tableRows);
+  searchForBooks(tableRows);
 });
